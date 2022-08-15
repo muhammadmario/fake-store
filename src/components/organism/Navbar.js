@@ -9,7 +9,7 @@ import Search from "../atoms/Search";
 
 function Navbar() {
   return (
-    <div className="w-full sticky top-0 border-b border-slate-900/10 h-20 flex justify-between items-center px-2 z-10 md:px-10">
+    <div className="w-full sticky top-0 border-b bg-white border-slate-900/10 h-20 flex justify-between items-center px-2 z-10 md:px-10">
       <Hamburger />
       <Logo />
       <Search />

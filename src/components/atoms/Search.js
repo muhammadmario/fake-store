@@ -2,7 +2,7 @@ import React from "react";
 
 function Search() {
   return (
-    <form className="  w-1/2">
+    <form className="w-1/2">
       <label
         for="default-search"
         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
@@ -30,7 +30,7 @@ function Search() {
         <input
           type="search"
           id="default-search"
-          class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 "
+          class="block p-2 pl-10 md:p-3 md:pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 "
           placeholder="Search Mockups, Logos..."
           required
         />
