@@ -4,7 +4,7 @@ import SizeList from "../organism/SizeList";
 
 function CategoryList() {
   return (
-    <div>
+    <div className="hidden md:block">
       <Category />
       <SizeList />
       <SizeList />

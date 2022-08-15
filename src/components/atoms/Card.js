@@ -1,16 +1,12 @@
 import React from "react";
 
-function Card() {
+function Card({ title, price, image }) {
   return (
-    <div className="w-fit font-aboreto flex flex-col justify-center items-center">
-      <img
-        src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d9bb3f55-801e-4cb0-963e-9ea2c01dce46/sportswear-max90-t-shirt-tdVGGv.png"
-        alt="pic"
-        className="aspect-square w-96 h-96"
-      />
-      <div>
-        <h1>Nama produk</h1>
-        <p className="text-center">$ 10.00</p>
+    <div className="w-full md:pl-5 cursor-pointer md:w-1/3 font-aboreto flex flex-col flex-wrap justify-center items-center  md:flex-row lg:w-1/5">
+      <img src={image} alt="pic" className="aspect-square bg-cover" />
+      <div className="w-full flex flex-wrap flex-col">
+        <h1 className="text-xs text-center">{title}</h1>
+        <p className="text-center">$ {price}</p>
       </div>
     </div>
   );
