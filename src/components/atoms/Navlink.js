@@ -25,7 +25,9 @@ function Navlink() {
 
       <div className="flex gap-2 order-1 md:order-2">
         <ButtonLogin />
-        <ButtonRegister />
+        <div className="hidden lg:block">
+          <ButtonRegister />
+        </div>
       </div>
     </ul>
   );

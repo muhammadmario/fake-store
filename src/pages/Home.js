@@ -5,7 +5,7 @@ import CategoryList from "../components/templates/CategoryList";
 
 function Home() {
   return (
-    <div className="w-full  flex px-10">
+    <div className="w-full flex px-10">
       <CategoryList />
       <CardList />
     </div>

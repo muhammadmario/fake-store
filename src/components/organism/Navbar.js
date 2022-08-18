@@ -19,8 +19,6 @@ function Navbar() {
       <Search />
       <div className="flex gap-4 justify-center items-center">
         <Navlink />
-        {/* <ButtonLogin />
-        <ButtonRegister /> */}
         <Cart />
       </div>
     </div>
