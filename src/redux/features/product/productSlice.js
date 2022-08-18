@@ -1,11 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createEntityAdapter,
+  createSlice,
+} from "@reduxjs/toolkit";
 import axios from "axios";
 const baseUrl = "https://fakestoreapi.com/products";
-const initialState = {
-  product: [],
-  status: "idle",
-  error: null,
-};
 
 export const fetchAllProducts = createAsyncThunk(
   "product/fetchAllProducts",
@@ -15,27 +14,40 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
+const productEntity = createEntityAdapter({
+  selectId: (product) => product.id,
+});
+
 const productSlice = createSlice({
   name: "product",
-  initialState,
+  initialState: productEntity.getInitialState({
+    status: "idle",
+    error: null,
+  }),
   reducers: {},
-  extraReducers(builder) {
-    builder
-      .addCase(fetchAllProducts.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        state.product = action.payload;
-        state.status = "succeeded";
-      })
-      .addCase(fetchAllProducts.rejected, (state, action) => {
-        state.status = "failed";
-      });
+  extraReducers: {
+    [fetchAllProducts.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fetchAllProducts.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      productEntity.setAll(state, action.payload);
+    },
+    [fetchAllProducts.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    },
   },
 });
 
-export const selectAllProduct = (state) => state.product.product;
+export const productSelector = productEntity.getSelectors(
+  (state) => state.product
+);
+
+// export const selectAllProduct = (state) => state.product.product;
 export const getProductStatus = (state) => state.product.status;
+// export const selectBlogById = (state, productId) =>
+//   state.product.product.find((product) => product.id === productId);
 
 export const {} = productSlice.actions;
 
