@@ -39,7 +39,7 @@ function CardList() {
   }
 
   return (
-    <div className="w-full  flex flex-wrap justify-center md:justify-start box-border">
+    <div className="w-full flex flex-wrap justify-center md:justify-start">
       {content}
     </div>
   );
