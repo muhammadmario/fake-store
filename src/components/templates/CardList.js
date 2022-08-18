@@ -11,8 +11,8 @@ function CardList() {
   const dispatch = useDispatch();
   const allProduct = useSelector(productSelector.selectAll);
   const productStatus = useSelector(getProductStatus);
-  console.log(productStatus);
-  console.log(allProduct);
+  // console.log(productStatus);
+  // console.log(allProduct);
 
   useEffect(() => {
     if (productStatus === "idle") {

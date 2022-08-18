@@ -1,8 +1,8 @@
 import React from "react";
 
-function Size() {
+function Size({ value }) {
   return (
-    <div class="flex items-center mb-4">
+    <div class="flex items-center">
       <input
         id="default-checkbox"
         type="checkbox"
@@ -13,7 +13,7 @@ function Size() {
         for="default-checkbox"
         class="ml-2 text-sm font-medium text-gray-900 "
       >
-        SM
+        {value}
       </label>
     </div>
   );
