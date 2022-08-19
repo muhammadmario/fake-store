@@ -8,8 +8,8 @@ const baseUrl = "https://fakestoreapi.com/products";
 
 export const fetchAllProducts = createAsyncThunk(
   "product/fetchAllProducts",
-  async () => {
-    const response = await axios.get(`${baseUrl}`);
+  async (initialState) => {
+    const response = await axios.get(`${baseUrl}/${initialState}`);
     return response.data;
   }
 );
@@ -25,8 +25,17 @@ const productSlice = createSlice({
   initialState: productEntity.getInitialState({
     status: "idle",
     error: null,
+    sort: "",
+    sortCategory: "",
   }),
-  reducers: {},
+  reducers: {
+    sortProduct: (state, action) => {
+      state.sort = action.payload;
+    },
+    sortProductByCategory: (state, action) => {
+      state.sortCategory = action.payload;
+    },
+  },
   extraReducers: {
     [fetchAllProducts.pending]: (state) => {
       state.status = "loading";
@@ -48,10 +57,11 @@ export const productSelector = productEntity.getSelectors(
 
 // export const selectAllProduct = (state) => state.product.product;
 export const getProductStatus = (state) => state.product.status;
-export const getCategoryStatus = (state) => state.product.category;
+export const getSortStatus = (state) => state.product.sort;
+export const getSortCategoryStatus = (state) => state.product.sortCategory;
 // export const selectBlogById = (state, productId) =>
 //   state.product.product.find((product) => product.id === productId);
 
-export const {} = productSlice.actions;
+export const { sortProduct, sortProductByCategory } = productSlice.actions;
 
 export default productSlice.reducer;

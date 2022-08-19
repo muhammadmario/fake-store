@@ -19,7 +19,7 @@ function DetailProduct() {
   );
 
   useEffect(() => {
-    dispatch(fetchAllProducts());
+    dispatch(fetchAllProducts(""));
   }, [dispatch]);
 
   if (!product) {
