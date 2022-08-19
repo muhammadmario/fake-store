@@ -9,10 +9,12 @@ const baseUrl = "https://fakestoreapi.com/products";
 export const fetchAllProducts = createAsyncThunk(
   "product/fetchAllProducts",
   async () => {
-    const response = await axios.get(baseUrl);
+    const response = await axios.get(`${baseUrl}`);
     return response.data;
   }
 );
+
+// export const fetchProductsByCategory
 
 const productEntity = createEntityAdapter({
   selectId: (product) => product.id,
@@ -46,6 +48,7 @@ export const productSelector = productEntity.getSelectors(
 
 // export const selectAllProduct = (state) => state.product.product;
 export const getProductStatus = (state) => state.product.status;
+export const getCategoryStatus = (state) => state.product.category;
 // export const selectBlogById = (state, productId) =>
 //   state.product.product.find((product) => product.id === productId);
 

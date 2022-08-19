@@ -5,20 +5,17 @@ import {
   getProductStatus,
   fetchAllProducts,
   productSelector,
+  getCategoryStatus,
 } from "../../redux/features/product/productSlice";
 
 function CardList() {
   const dispatch = useDispatch();
   const allProduct = useSelector(productSelector.selectAll);
   const productStatus = useSelector(getProductStatus);
-  // console.log(productStatus);
-  // console.log(allProduct);
 
   useEffect(() => {
-    if (productStatus === "idle") {
-      dispatch(fetchAllProducts());
-    }
-  }, [dispatch, productStatus]);
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
   let content;
 
