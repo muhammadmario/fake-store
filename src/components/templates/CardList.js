@@ -9,6 +9,7 @@ import {
   getSortStatus,
   getSortCategoryStatus,
 } from "../../redux/features/product/productSlice";
+import Loading from "./Loading";
 
 function CardList() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function CardList() {
   let content;
 
   if (productStatus === "loading") {
-    content = <p>Loading..</p>;
+    content = <Loading />;
   } else if (productStatus === "succeeded") {
     content = allProduct.map((product) => (
       <Card
