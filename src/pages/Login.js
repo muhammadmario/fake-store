@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchLogin } from "../redux/features/auth/userSlice";
+import { fetchLogin, fetchUser } from "../redux/features/auth/userSlice";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -32,6 +32,7 @@ function Login() {
   useEffect(() => {
     console.log("cek user token di localstorage");
     if (localStorage.getItem("token")) {
+      dispatch(fetchUser(2));
       navigate("/");
     }
   }, [status, dispatch, userToken]);
