@@ -1,9 +1,8 @@
-import Card from "./components/atoms/Card";
-import Navbar from "./components/organism/Navbar";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import DetailProduct from "./pages/DetailProduct";
 import Layout from "./pages/Layout";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -13,6 +12,7 @@ function App() {
         <Route path="product">
           <Route path=":productId" element={<DetailProduct />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Route>
     </Routes>
   );

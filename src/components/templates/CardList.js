@@ -17,14 +17,17 @@ function CardList() {
   const productStatus = useSelector(getProductStatus);
   const sortStatus = useSelector(getSortStatus);
   const categoryStatus = useSelector(getSortCategoryStatus);
+  const { userToken } = useSelector((state) => state.user);
 
   const customCategoryStatus = `/category/${categoryStatus}`;
 
   useEffect(() => {
-    if (categoryStatus == "") {
-      dispatch(fetchAllProducts(""));
-    } else {
-      dispatch(fetchAllProducts(customCategoryStatus));
+    if (userToken) {
+      if (categoryStatus == "") {
+        dispatch(fetchAllProducts(""));
+      } else {
+        dispatch(fetchAllProducts(customCategoryStatus));
+      }
     }
   }, [dispatch, sortStatus, categoryStatus]);
 

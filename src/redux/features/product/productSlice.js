@@ -9,7 +9,7 @@ const baseUrl = "https://fakestoreapi.com/products";
 export const fetchAllProducts = createAsyncThunk(
   "product/fetchAllProducts",
   async (initialState) => {
-    const response = await axios.get(`${baseUrl}/${initialState}`);
+    const response = await axios.get(`${baseUrl}${initialState}`);
     return response.data;
   }
 );

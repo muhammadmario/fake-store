@@ -5,11 +5,12 @@ import {
   toggleSidebar,
 } from "../../redux/features/navbar/navbarSlice";
 import ButtonLogin from "./ButtonLogin";
+import ButtonLogout from "./ButtonLogout";
 import ButtonRegister from "./ButtonRegister";
 
 function Navlink() {
-  const dispatch = useDispatch();
   const sidebarValue = useSelector(getSidebarValue);
+  const { userToken } = useSelector((state) => state.user);
 
   return (
     <ul
@@ -24,9 +25,10 @@ function Navlink() {
       </div>
 
       <div className="flex gap-2 order-1 md:order-2">
-        <ButtonLogin />
+        {userToken ? <ButtonLogout /> : <ButtonLogin />}
+
         <div className="hidden lg:block">
-          <ButtonRegister />
+          {userToken ? "" : <ButtonRegister />}
         </div>
       </div>
     </ul>
