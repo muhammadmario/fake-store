@@ -14,8 +14,6 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
-// export const fetchProductsByCategory
-
 const productEntity = createEntityAdapter({
   selectId: (product) => product.id,
 });
@@ -55,7 +53,6 @@ export const productSelector = productEntity.getSelectors(
   (state) => state.product
 );
 
-// export const selectAllProduct = (state) => state.product.product;
 export const getProductStatus = (state) => state.product.status;
 export const getSortStatus = (state) => state.product.sort;
 export const getSortCategoryStatus = (state) => state.product.sortCategory;

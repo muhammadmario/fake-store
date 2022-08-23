@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import DetailProduct from "./pages/DetailProduct";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path=":productId" element={<DetailProduct />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Route>
     </Routes>
   );
