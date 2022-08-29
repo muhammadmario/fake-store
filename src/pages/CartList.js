@@ -8,8 +8,11 @@ import {
   incrementQuantity,
 } from "../redux/features/cart/cartSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function CartList() {
+  const { userToken } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const myDate = moment().format("YYYY-MM-DD");
   const carts = useSelector((state) => state.cart.cart);
   const { cartTotalQuantity, cartTotalAmount } = useSelector(
@@ -19,22 +22,28 @@ function CartList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (userToken == null) {
+      navigate("/login");
+    }
+  }, [userToken]);
+
+  useEffect(() => {
     dispatch(getTotal());
   }, [carts]);
 
   return (
-    <div className="w-full flex min-h-[85vh]">
+    <div className="w-full flex flex-col px-2 md:flex-row min-h-[85vh]">
       {carts.length ? (
-        <div className="flex flex-col gap-4 w-1/2  justify-center items-center">
+        <div className="flex flex-col gap-4 w-full md:w-1/2 justify-center items-center">
           {carts.map((cart) => (
-            <div className="flex w-3/4 flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-1/2 md:max-h-60 hover:bg-gray-100 ">
+            <div className="flex w-full md:w-full lg:w-3/4 flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-1/2 md:max-h-60 hover:bg-gray-100 ">
               <img
-                className="object-cover w-full h-96 rounded-t-lg md:max-h-60 md:w-48 md:rounded-none md:rounded-l-lg"
+                className="object-contain w-full h-48 md:h-96 rounded-t-lg md:max-h-60 md:w-48 md:rounded-none md:rounded-l-lg"
                 src={cart.image}
                 alt={cart.title}
               />
               <div className="flex flex-col justify-between p-4 leading-normal">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                <h5 className="mb-2 md:text-base lg:text-xl font-bold tracking-tight text-gray-900">
                   {cart.title}
                 </h5>
 
@@ -62,13 +71,13 @@ function CartList() {
           ))}
         </div>
       ) : (
-        <div className="w-1/2">
-          <h2>Your Cart is empty</h2>
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
+          <h2 className="text-xl">Your Cart is empty</h2>
         </div>
       )}
-      <div className="w-1/2  flex justify-center items-center ">
-        <div className="border flex flex-col w-3/4 h-fit p-5">
-          <div className="flex ">
+      <div className="w-full mt-4 md:mt-0 md:w-1/2  flex justify-center items-center ">
+        <div className="border flex flex-col w-full  md:w-3/4 h-fit p-5">
+          <div className="flex mb-4">
             <p className="text-xl">Total : </p>
             <p className="text-xl">$ {cartTotalAmount}</p>
           </div>

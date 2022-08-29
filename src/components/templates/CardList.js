@@ -22,12 +22,10 @@ function CardList() {
   const customCategoryStatus = `/category/${categoryStatus}`;
 
   useEffect(() => {
-    if (userToken) {
-      if (categoryStatus == "") {
-        dispatch(fetchAllProducts(""));
-      } else {
-        dispatch(fetchAllProducts(customCategoryStatus));
-      }
+    if (categoryStatus == "") {
+      dispatch(fetchAllProducts(""));
+    } else {
+      dispatch(fetchAllProducts(customCategoryStatus));
     }
   }, [dispatch, sortStatus, categoryStatus]);
 

@@ -14,24 +14,17 @@ function FilterList() {
   const [sortBy, setSortBy] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const categories = useSelector(selectAllCategory);
-  const { userToken } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (userToken) {
-      dispatch(sortProduct(sortBy));
-    }
+    dispatch(sortProduct(sortBy));
   }, [sortBy]);
 
   useEffect(() => {
-    if (userToken) {
-      dispatch(getAllCategory());
-    }
+    dispatch(getAllCategory());
   }, []);
 
   useEffect(() => {
-    if (userToken) {
-      dispatch(sortProductByCategory(productCategory));
-    }
+    dispatch(sortProductByCategory(productCategory));
   }, [productCategory]);
 
   return (

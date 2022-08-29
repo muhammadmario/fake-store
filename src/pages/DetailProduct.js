@@ -5,34 +5,29 @@ import {
   productSelector,
 } from "../redux/features/product/productSlice";
 import { useSelector, useDispatch } from "react-redux";
-
-import { addToCart, incrementQuantity } from "../redux/features/cart/cartSlice";
+import { addToCart } from "../redux/features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 function DetailProduct() {
+  const navigate = useNavigate();
   const { productId } = useParams();
-  const dispatch = useDispatch();
+  const { userToken } = useSelector((state) => state.user);
 
-  const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
 
   const product = useSelector((state) =>
     productSelector.selectById(state, Number(productId))
   );
 
-  // console.log(product);
-  // const selectedProduct = [...product, (product.quantity = count)];
-
-  const handleIncrement = (product, count) => {
-    setCount(count + 1);
-    dispatch(incrementQuantity(product, Number(count)));
-  };
+  useEffect(() => {
+    if (userToken == null) {
+      navigate("/login");
+    }
+  }, [userToken]);
 
   useEffect(() => {
     dispatch(fetchAllProducts(""));
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(count);
-  // }, [count]);
 
   if (!product) {
     return (
@@ -70,12 +65,12 @@ function DetailProduct() {
           {product.description}
         </p>
         <div className="mt-4 md:hidden">
-          {/* <button
+          <button
             onClick={() => dispatch(addToCart(product))}
             className="px-4 py-2 md:inline-block md:px-5 md:py-2 rounded-md border border-green-600 h-fit w-fit bg-green-500 text-white"
           >
             Add to cart
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

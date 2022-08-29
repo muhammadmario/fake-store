@@ -19,9 +19,9 @@ function Navlink() {
       } `}
     >
       <div className="order-2 md:order-1 flex flex-col gap-2 md:gap-5 md:flex-row  cursor-pointer">
-        <li className="md:flex md:justify-center md:items-center">Men</li>
-        <li className="md:flex md:justify-center md:items-center">Women</li>
-        <li className="md:flex md:justify-center md:items-center">Kids</li>
+        <li className="md:flex md:justify-center md:items-center">Best Sale</li>
+        <li className="md:flex md:justify-center md:items-center">Hot</li>
+        <li className="md:flex md:justify-center md:items-center">Discount</li>
       </div>
 
       <div className="flex gap-2 order-1 md:order-2">
