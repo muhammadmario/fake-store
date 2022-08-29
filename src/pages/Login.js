@@ -23,14 +23,14 @@ function Login() {
 
   useEffect(() => {
     if (!localStorage.getItem("token") && userToken) {
-      console.log("masukin token");
+      // console.log("masukin token");
       localStorage.setItem("token", userToken);
       navigate("/");
     }
   }, [userToken]);
 
   useEffect(() => {
-    console.log("cek user token di localstorage");
+    // console.log("cek user token di localstorage");
     if (localStorage.getItem("token")) {
       dispatch(fetchUser(2));
       navigate("/");
@@ -59,7 +59,7 @@ function Login() {
                   id="username"
                   value={username}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="name@company.com"
+                  placeholder="username"
                   required
                   onChange={(e) => setUsername(e.target.value)}
                 />

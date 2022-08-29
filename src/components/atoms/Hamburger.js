@@ -9,7 +9,7 @@ function Hamburger() {
   const dispatch = useDispatch();
   const sidebarValue = useSelector(getSidebarValue);
 
-  console.log(sidebarValue);
+  // console.log(sidebarValue);
   return (
     <div
       className="block md:hidden  cursor-pointer "

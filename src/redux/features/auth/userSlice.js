@@ -49,6 +49,7 @@ const userSlice = createSlice({
   reducers: {
     logout: (state) => {
       localStorage.removeItem("token");
+      localStorage.removeItem("cartItems");
       state.userInfo = null;
       state.userToken = null;
       state.status = "idle";
